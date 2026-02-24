@@ -60,6 +60,7 @@ outputs/*.json
 outputs/*.png
 outputs/*.jpg
 outputs/*.pdf
+outputs/*.html
 
 # Logs
 *.log
