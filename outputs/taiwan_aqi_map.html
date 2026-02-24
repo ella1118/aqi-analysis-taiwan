@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_362dad9d9e4b014e40697742bf6de281 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    top: 10px; right: 10px; width: 180px; height: auto; 
+                    border:2px solid grey; z-index:9999; font-size:14px;
+                    background-color:white; border-radius: 5px; padding: 10px;">
+        <p style="margin: 5px 0; font-weight: bold;">AQI 空氣品質指標</p>
+        <p style="margin: 3px 0; color: #00E400;">● 0-50 良好</p>
+        <p style="margin: 3px 0; color: #FFFF00;">● 51-100 中等</p>
+        <p style="margin: 3px 0; color: #FF0000;">● 101+ 不健康</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_362dad9d9e4b014e40697742bf6de281" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_362dad9d9e4b014e40697742bf6de281 = L.map(
+                "map_362dad9d9e4b014e40697742bf6de281",
+                {
+                    center: [24.198420930232555, 120.86213720930232],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b4f38a4d19267a14056f062eabf4fae1 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b4f38a4d19267a14056f062eabf4fae1.addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+            var circle_marker_a696aa330bab0dcd41ee24717d2421a6 = L.circleMarker(
+                [25.0645, 121.6321],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.58, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_94adb2fd0545702606afa6f7658efad7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_44c0170f5281cad7e370a55ba76b92b1 = $(`<div id="html_44c0170f5281cad7e370a55ba76b92b1" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">汐止</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">79</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>11.76 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_94adb2fd0545702606afa6f7658efad7.setContent(html_44c0170f5281cad7e370a55ba76b92b1);
+            
+        
+
+        circle_marker_a696aa330bab0dcd41ee24717d2421a6.bindPopup(popup_94adb2fd0545702606afa6f7658efad7)
+        ;
+
+        
+    
+    
+            circle_marker_a696aa330bab0dcd41ee24717d2421a6.bindTooltip(
+                `<div>
+                     汐止 - AQI: 79
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_005238d928ba0a6e0b1ba56a3b597e06 = L.circleMarker(
+                [24.9791, 121.4599],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.46, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_6498ce0ec30c1a75598e4ebd46b9a582 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_81b222f3e992931ae1ea74cb5ad430cb = $(`<div id="html_81b222f3e992931ae1ea74cb5ad430cb" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">土城</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">73</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>9.55 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_6498ce0ec30c1a75598e4ebd46b9a582.setContent(html_81b222f3e992931ae1ea74cb5ad430cb);
+            
+        
+
+        circle_marker_005238d928ba0a6e0b1ba56a3b597e06.bindPopup(popup_6498ce0ec30c1a75598e4ebd46b9a582)
+        ;
+
+        
+    
+    
+            circle_marker_005238d928ba0a6e0b1ba56a3b597e06.bindTooltip(
+                `<div>
+                     土城 - AQI: 73
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b36728839e1ca4743bd0ba8f1f279357 = L.circleMarker(
+                [25.0167, 121.4624],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.74, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_1ce7a58bb5bed4ff13694cd7dc058599 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d6376d70ac4894bf6ab0ee98f2490818 = $(`<div id="html_d6376d70ac4894bf6ab0ee98f2490818" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">板橋</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">87</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>6.5 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_1ce7a58bb5bed4ff13694cd7dc058599.setContent(html_d6376d70ac4894bf6ab0ee98f2490818);
+            
+        
+
+        circle_marker_b36728839e1ca4743bd0ba8f1f279357.bindPopup(popup_1ce7a58bb5bed4ff13694cd7dc058599)
+        ;
+
+        
+    
+    
+            circle_marker_b36728839e1ca4743bd0ba8f1f279357.bindTooltip(
+                `<div>
+                     板橋 - AQI: 87
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eb582a31e2591a56afdbe6a1de0dc904 = L.circleMarker(
+                [25.0358, 121.4497],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.72, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_8171546723d5f21596bf48d8ff2f5a4e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0194c2f01830668ebc32bf6273f4d3bb = $(`<div id="html_0194c2f01830668ebc32bf6273f4d3bb" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">新莊</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">86</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>6.92 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_8171546723d5f21596bf48d8ff2f5a4e.setContent(html_0194c2f01830668ebc32bf6273f4d3bb);
+            
+        
+
+        circle_marker_eb582a31e2591a56afdbe6a1de0dc904.bindPopup(popup_8171546723d5f21596bf48d8ff2f5a4e)
+        ;
+
+        
+    
+    
+            circle_marker_eb582a31e2591a56afdbe6a1de0dc904.bindTooltip(
+                `<div>
+                     新莊 - AQI: 86
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f98c39b4b0c3fa3012bf9067bc37f9ff = L.circleMarker(
+                [25.0789, 121.3198],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.4, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_a08d283902ec4438c0f9691b0b55e2f2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8118e8f77ac4568da3bde1e3c79c8d2 = $(`<div id="html_b8118e8f77ac4568da3bde1e3c79c8d2" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">林口</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">70</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>20.19 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_a08d283902ec4438c0f9691b0b55e2f2.setContent(html_b8118e8f77ac4568da3bde1e3c79c8d2);
+            
+        
+
+        circle_marker_f98c39b4b0c3fa3012bf9067bc37f9ff.bindPopup(popup_a08d283902ec4438c0f9691b0b55e2f2)
+        ;
+
+        
+    
+    
+            circle_marker_f98c39b4b0c3fa3012bf9067bc37f9ff.bindTooltip(
+                `<div>
+                     林口 - AQI: 70
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_34905f454decd8049a275e135e8c8e16 = L.circleMarker(
+                [25.1646, 121.4459],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.74, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_b3b60e31088a197de9766e0d2b20ff17 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fd54724390cd492fcd417a5004553d86 = $(`<div id="html_fd54724390cd492fcd417a5004553d86" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">淡水</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">87</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>14.79 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_b3b60e31088a197de9766e0d2b20ff17.setContent(html_fd54724390cd492fcd417a5004553d86);
+            
+        
+
+        circle_marker_34905f454decd8049a275e135e8c8e16.bindPopup(popup_b3b60e31088a197de9766e0d2b20ff17)
+        ;
+
+        
+    
+    
+            circle_marker_34905f454decd8049a275e135e8c8e16.bindTooltip(
+                `<div>
+                     淡水 - AQI: 87
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9d6c6aecc8453d6dad6dbd8cabb8273d = L.circleMarker(
+                [25.0877, 121.524],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.56, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_d3c04cf1276addb34a31257cd9eac0a1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b53c6972da97131d9ce521e5f32cd10e = $(`<div id="html_b53c6972da97131d9ce521e5f32cd10e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">士林</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">78</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>4.48 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_d3c04cf1276addb34a31257cd9eac0a1.setContent(html_b53c6972da97131d9ce521e5f32cd10e);
+            
+        
+
+        circle_marker_9d6c6aecc8453d6dad6dbd8cabb8273d.bindPopup(popup_d3c04cf1276addb34a31257cd9eac0a1)
+        ;
+
+        
+    
+    
+            circle_marker_9d6c6aecc8453d6dad6dbd8cabb8273d.bindTooltip(
+                `<div>
+                     士林 - AQI: 78
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ec4f7c0280e7cfb66826424963e32093 = L.circleMarker(
+                [25.0645, 121.5241],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.66, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_7b34a9f429b37a308ccf707a260c300b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6b2cd3e5ba839cc77b1a36a986be3f01 = $(`<div id="html_6b2cd3e5ba839cc77b1a36a986be3f01" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">中山</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">83</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>1.98 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_7b34a9f429b37a308ccf707a260c300b.setContent(html_6b2cd3e5ba839cc77b1a36a986be3f01);
+            
+        
+
+        circle_marker_ec4f7c0280e7cfb66826424963e32093.bindPopup(popup_7b34a9f429b37a308ccf707a260c300b)
+        ;
+
+        
+    
+    
+            circle_marker_ec4f7c0280e7cfb66826424963e32093.bindTooltip(
+                `<div>
+                     中山 - AQI: 83
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6af7e2010935ab50708f981b4d3a5a77 = L.circleMarker(
+                [25.0128, 121.5274],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.54, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_3179c387c792e6ef6199656580df836e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a9b514405ad42174d4152e449179d33 = $(`<div id="html_2a9b514405ad42174d4152e449179d33" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">古亭</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">77</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>4.02 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_3179c387c792e6ef6199656580df836e.setContent(html_2a9b514405ad42174d4152e449179d33);
+            
+        
+
+        circle_marker_6af7e2010935ab50708f981b4d3a5a77.bindPopup(popup_3179c387c792e6ef6199656580df836e)
+        ;
+
+        
+    
+    
+            circle_marker_6af7e2010935ab50708f981b4d3a5a77.bindTooltip(
+                `<div>
+                     古亭 - AQI: 77
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e20cb0c35564fd9e47013ac063ec9e99 = L.circleMarker(
+                [25.0477, 121.575],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.66, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_40de7548cc5ad51f843d866749ab968b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_500ae32d2b68f4235843b5137acfb24c = $(`<div id="html_500ae32d2b68f4235843b5137acfb24c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">松山</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">83</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>5.85 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_40de7548cc5ad51f843d866749ab968b.setContent(html_500ae32d2b68f4235843b5137acfb24c);
+            
+        
+
+        circle_marker_e20cb0c35564fd9e47013ac063ec9e99.bindPopup(popup_40de7548cc5ad51f843d866749ab968b)
+        ;
+
+        
+    
+    
+            circle_marker_e20cb0c35564fd9e47013ac063ec9e99.bindTooltip(
+                `<div>
+                     松山 - AQI: 83
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ef603079c3127d42bd2bb9739ce2fcdc = L.circleMarker(
+                [25.0645, 121.5178],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.72, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_985af30ac1d59941c06ec42d3e9a51c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1e27c0664cf07deafcef39cf8dac1191 = $(`<div id="html_1e27c0664cf07deafcef39cf8dac1191" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">大同</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">86</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>1.85 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_985af30ac1d59941c06ec42d3e9a51c6.setContent(html_1e27c0664cf07deafcef39cf8dac1191);
+            
+        
+
+        circle_marker_ef603079c3127d42bd2bb9739ce2fcdc.bindPopup(popup_985af30ac1d59941c06ec42d3e9a51c6)
+        ;
+
+        
+    
+    
+            circle_marker_ef603079c3127d42bd2bb9739ce2fcdc.bindTooltip(
+                `<div>
+                     大同 - AQI: 86
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_57aff7a9fc3298aa83918300ae0b3534 = L.circleMarker(
+                [24.9936, 121.301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.7, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_8dd431fcf524aadb4e6733699b02d325 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a22f5080f92a05e334908735d74800cd = $(`<div id="html_a22f5080f92a05e334908735d74800cd" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">桃園</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>桃園市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">85</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>22.61 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_8dd431fcf524aadb4e6733699b02d325.setContent(html_a22f5080f92a05e334908735d74800cd);
+            
+        
+
+        circle_marker_57aff7a9fc3298aa83918300ae0b3534.bindPopup(popup_8dd431fcf524aadb4e6733699b02d325)
+        ;
+
+        
+    
+    
+            circle_marker_57aff7a9fc3298aa83918300ae0b3534.bindTooltip(
+                `<div>
+                     桃園 - AQI: 85
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c3dc72b379fee29de5d13689f29f961f = L.circleMarker(
+                [24.9446, 121.2188],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.78, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_0e56a32d2b31af2e448102b228e9dac8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1944776783626c03f8d3429ad24fc19b = $(`<div id="html_1944776783626c03f8d3429ad24fc19b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">平鎮</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>桃園市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">89</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>32.2 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_0e56a32d2b31af2e448102b228e9dac8.setContent(html_1944776783626c03f8d3429ad24fc19b);
+            
+        
+
+        circle_marker_c3dc72b379fee29de5d13689f29f961f.bindPopup(popup_0e56a32d2b31af2e448102b228e9dac8)
+        ;
+
+        
+    
+    
+            circle_marker_c3dc72b379fee29de5d13689f29f961f.bindTooltip(
+                `<div>
+                     平鎮 - AQI: 89
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5148456a920aa707c576e9edc7f1723d = L.circleMarker(
+                [24.8626, 121.2299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.9, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_fab0a926cc1ab9c439d6ce5c4c88301b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6e5f3e88f47d0b95d0315e0f711e5cb2 = $(`<div id="html_6e5f3e88f47d0b95d0315e0f711e5cb2" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">龍潭</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>桃園市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">95</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>35.52 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_fab0a926cc1ab9c439d6ce5c4c88301b.setContent(html_6e5f3e88f47d0b95d0315e0f711e5cb2);
+            
+        
+
+        circle_marker_5148456a920aa707c576e9edc7f1723d.bindPopup(popup_fab0a926cc1ab9c439d6ce5c4c88301b)
+        ;
+
+        
+    
+    
+            circle_marker_5148456a920aa707c576e9edc7f1723d.bindTooltip(
+                `<div>
+                     龍潭 - AQI: 95
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a158f93e0aea7edb7eca16862d4bc4c0 = L.circleMarker(
+                [24.7446, 121.0865],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_f237f5a582e46b2e1e5f3f3a8cfc6464 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_56e7ec646f0e7a91b6707686f074c1ea = $(`<div id="html_56e7ec646f0e7a91b6707686f074c1ea" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">竹東</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新竹縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">80</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>54.95 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_f237f5a582e46b2e1e5f3f3a8cfc6464.setContent(html_56e7ec646f0e7a91b6707686f074c1ea);
+            
+        
+
+        circle_marker_a158f93e0aea7edb7eca16862d4bc4c0.bindPopup(popup_f237f5a582e46b2e1e5f3f3a8cfc6464)
+        ;
+
+        
+    
+    
+            circle_marker_a158f93e0aea7edb7eca16862d4bc4c0.bindTooltip(
+                `<div>
+                     竹東 - AQI: 80
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_84426140c9f5627cd48f72fce005605e = L.circleMarker(
+                [24.8138, 120.9675],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.52, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_1f76ebe70bdc3bd3f4186eadcde8ed93 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6b4a1ba890582f476a986e296c334e91 = $(`<div id="html_6b4a1ba890582f476a986e296c334e91" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">新竹</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新竹市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">76</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>61.26 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_1f76ebe70bdc3bd3f4186eadcde8ed93.setContent(html_6b4a1ba890582f476a986e296c334e91);
+            
+        
+
+        circle_marker_84426140c9f5627cd48f72fce005605e.bindPopup(popup_1f76ebe70bdc3bd3f4186eadcde8ed93)
+        ;
+
+        
+    
+    
+            circle_marker_84426140c9f5627cd48f72fce005605e.bindTooltip(
+                `<div>
+                     新竹 - AQI: 76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b38438ae55b03442db45ef5e3c0b7cce = L.circleMarker(
+                [24.6876, 120.8806],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.72, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_e534ec3c2a641746d00568edb007f172 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bfebbde44182e08aee7f68f49b02f2b3 = $(`<div id="html_bfebbde44182e08aee7f68f49b02f2b3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">頭份</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>苗栗縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">86</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>75.68 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_e534ec3c2a641746d00568edb007f172.setContent(html_bfebbde44182e08aee7f68f49b02f2b3);
+            
+        
+
+        circle_marker_b38438ae55b03442db45ef5e3c0b7cce.bindPopup(popup_e534ec3c2a641746d00568edb007f172)
+        ;
+
+        
+    
+    
+            circle_marker_b38438ae55b03442db45ef5e3c0b7cce.bindTooltip(
+                `<div>
+                     頭份 - AQI: 86
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b6ac5c6b81883cc8560d346833066a20 = L.circleMarker(
+                [24.5629, 120.8214],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.52, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_137abafdd95e52011898f836d7eac053 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6bb06bd909157658e30ce6ac1305baee = $(`<div id="html_6bb06bd909157658e30ce6ac1305baee" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">苗栗</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>苗栗縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">76</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>88.5 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_137abafdd95e52011898f836d7eac053.setContent(html_6bb06bd909157658e30ce6ac1305baee);
+            
+        
+
+        circle_marker_b6ac5c6b81883cc8560d346833066a20.bindPopup(popup_137abafdd95e52011898f836d7eac053)
+        ;
+
+        
+    
+    
+            circle_marker_b6ac5c6b81883cc8560d346833066a20.bindTooltip(
+                `<div>
+                     苗栗 - AQI: 76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77a5ab7d1c2969420fb105ec3e0989ab = L.circleMarker(
+                [24.2525, 120.7176],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.42, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_ef79f2760a373ea735f1571fa5f21f00 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b76b4cbcc64d72a401823ba582e82f36 = $(`<div id="html_b76b4cbcc64d72a401823ba582e82f36" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">豐原</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺中市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">71</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>119.62 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_ef79f2760a373ea735f1571fa5f21f00.setContent(html_b76b4cbcc64d72a401823ba582e82f36);
+            
+        
+
+        circle_marker_77a5ab7d1c2969420fb105ec3e0989ab.bindPopup(popup_ef79f2760a373ea735f1571fa5f21f00)
+        ;
+
+        
+    
+    
+            circle_marker_77a5ab7d1c2969420fb105ec3e0989ab.bindTooltip(
+                `<div>
+                     豐原 - AQI: 71
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8b951c95676dead8a599fdf99059e6d2 = L.circleMarker(
+                [24.2332, 120.5654],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.46, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_46f0155f7e078ce5f800ad2d8b556d4b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_587b8cf8d03a75a524e86f7a51130c8d = $(`<div id="html_587b8cf8d03a75a524e86f7a51130c8d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">沙鹿</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺中市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">73</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>132.0 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_46f0155f7e078ce5f800ad2d8b556d4b.setContent(html_587b8cf8d03a75a524e86f7a51130c8d);
+            
+        
+
+        circle_marker_8b951c95676dead8a599fdf99059e6d2.bindPopup(popup_46f0155f7e078ce5f800ad2d8b556d4b)
+        ;
+
+        
+    
+    
+            circle_marker_8b951c95676dead8a599fdf99059e6d2.bindTooltip(
+                `<div>
+                     沙鹿 - AQI: 73
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f0b14176b72c673f7d12f66c45036a31 = L.circleMarker(
+                [24.0995, 120.6788],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.52, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_decefb81db094482505ae0d42707cb7c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_91b206a147d13f1de97f90953d7ce5be = $(`<div id="html_91b206a147d13f1de97f90953d7ce5be" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">大里</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺中市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">76</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>135.06 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_decefb81db094482505ae0d42707cb7c.setContent(html_91b206a147d13f1de97f90953d7ce5be);
+            
+        
+
+        circle_marker_f0b14176b72c673f7d12f66c45036a31.bindPopup(popup_decefb81db094482505ae0d42707cb7c)
+        ;
+
+        
+    
+    
+            circle_marker_f0b14176b72c673f7d12f66c45036a31.bindTooltip(
+                `<div>
+                     大里 - AQI: 76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ade22dea066c28ba8880cc5923e01995 = L.circleMarker(
+                [24.0766, 120.5422],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_a87b40bd4a8d60fbe651356d455db13d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40aad8ec9f789c778f11528337037408 = $(`<div id="html_40aad8ec9f789c778f11528337037408" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">彰化</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>彰化縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">75</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>146.03 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_a87b40bd4a8d60fbe651356d455db13d.setContent(html_40aad8ec9f789c778f11528337037408);
+            
+        
+
+        circle_marker_ade22dea066c28ba8880cc5923e01995.bindPopup(popup_a87b40bd4a8d60fbe651356d455db13d)
+        ;
+
+        
+    
+    
+            circle_marker_ade22dea066c28ba8880cc5923e01995.bindTooltip(
+                `<div>
+                     彰化 - AQI: 75
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9741acf3f17da2f7e34d579e8eb7ba82 = L.circleMarker(
+                [23.9099, 120.6838],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.52, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_6c32e93c9c083f3c3ad4cbba50d16853 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e53c685d323468e691e5a86182ec92bb = $(`<div id="html_e53c685d323468e691e5a86182ec92bb" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">南投</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>南投縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">76</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>151.72 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_6c32e93c9c083f3c3ad4cbba50d16853.setContent(html_e53c685d323468e691e5a86182ec92bb);
+            
+        
+
+        circle_marker_9741acf3f17da2f7e34d579e8eb7ba82.bindPopup(popup_6c32e93c9c083f3c3ad4cbba50d16853)
+        ;
+
+        
+    
+    
+            circle_marker_9741acf3f17da2f7e34d579e8eb7ba82.bindTooltip(
+                `<div>
+                     南投 - AQI: 76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_de13daba05b229843a175d0e8a1d2ec3 = L.circleMarker(
+                [23.7089, 120.4316],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.86, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_95f5f5513689ec3b18a537cb7ffca02b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_77bfeb364510b27d3b946228f581c8a6 = $(`<div id="html_77bfeb364510b27d3b946228f581c8a6" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">斗六</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>雲林縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">93</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>184.71 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_95f5f5513689ec3b18a537cb7ffca02b.setContent(html_77bfeb364510b27d3b946228f581c8a6);
+            
+        
+
+        circle_marker_de13daba05b229843a175d0e8a1d2ec3.bindPopup(popup_95f5f5513689ec3b18a537cb7ffca02b)
+        ;
+
+        
+    
+    
+            circle_marker_de13daba05b229843a175d0e8a1d2ec3.bindTooltip(
+                `<div>
+                     斗六 - AQI: 93
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a9f72a3526175ff425769cb1722bd437 = L.circleMarker(
+                [23.4619, 120.2479],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.84, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_94126a95a81d723841ac3b6a3d0f5260 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e3f17b216bfb7f2fe65044af6d3f610c = $(`<div id="html_e3f17b216bfb7f2fe65044af6d3f610c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">朴子</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>嘉義縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">92</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>217.86 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_94126a95a81d723841ac3b6a3d0f5260.setContent(html_e3f17b216bfb7f2fe65044af6d3f610c);
+            
+        
+
+        circle_marker_a9f72a3526175ff425769cb1722bd437.bindPopup(popup_94126a95a81d723841ac3b6a3d0f5260)
+        ;
+
+        
+    
+    
+            circle_marker_a9f72a3526175ff425769cb1722bd437.bindTooltip(
+                `<div>
+                     朴子 - AQI: 92
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_649d6b7e4a114bd54f20f8f367396905 = L.circleMarker(
+                [23.4801, 120.4491],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.94, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_35d8b11a4793a3c1f43d328b57f18c24 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_daf5445ee4b970dd78d35500fe1e6e24 = $(`<div id="html_daf5445ee4b970dd78d35500fe1e6e24" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">嘉義</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>嘉義市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">97</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>204.72 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_35d8b11a4793a3c1f43d328b57f18c24.setContent(html_daf5445ee4b970dd78d35500fe1e6e24);
+            
+        
+
+        circle_marker_649d6b7e4a114bd54f20f8f367396905.bindPopup(popup_35d8b11a4793a3c1f43d328b57f18c24)
+        ;
+
+        
+    
+    
+            circle_marker_649d6b7e4a114bd54f20f8f367396905.bindTooltip(
+                `<div>
+                     嘉義 - AQI: 97
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aa6be3223dd9a94be209b9673d072e3a = L.circleMarker(
+                [23.3005, 120.3169],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_d2404926a12f04133d89daf956fa6474 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_440aceedc4ea5fc79df55905f1ac093e = $(`<div id="html_440aceedc4ea5fc79df55905f1ac093e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">新營</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺南市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">100</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>228.74 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_d2404926a12f04133d89daf956fa6474.setContent(html_440aceedc4ea5fc79df55905f1ac093e);
+            
+        
+
+        circle_marker_aa6be3223dd9a94be209b9673d072e3a.bindPopup(popup_d2404926a12f04133d89daf956fa6474)
+        ;
+
+        
+    
+    
+            circle_marker_aa6be3223dd9a94be209b9673d072e3a.bindTooltip(
+                `<div>
+                     新營 - AQI: 100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_66d84706b8a7d03d9ce4a7a2f9fd3169 = L.circleMarker(
+                [23.1327, 120.2995],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.02, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_caab1e0cb59ce986f1e7de61d1addf1a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ece86e7d1804b18892fb16ec256fce1b = $(`<div id="html_ece86e7d1804b18892fb16ec256fce1b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">善化</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>臺南市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FF0000; font-weight: bold;">101</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>245.59 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：不健康</p>             </div>             </div>`)[0];
+                popup_caab1e0cb59ce986f1e7de61d1addf1a.setContent(html_ece86e7d1804b18892fb16ec256fce1b);
+            
+        
+
+        circle_marker_66d84706b8a7d03d9ce4a7a2f9fd3169.bindPopup(popup_caab1e0cb59ce986f1e7de61d1addf1a)
+        ;
+
+        
+    
+    
+            circle_marker_66d84706b8a7d03d9ce4a7a2f9fd3169.bindTooltip(
+                `<div>
+                     善化 - AQI: 101
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_36eb5d728675d9dfbdd8c30f094c54cf = L.circleMarker(
+                [22.6287, 120.3566],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.7, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_4471a04e98694dfc39b0b7e10672796c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_63e4b6a5836b3282439e5cd56d8dd54b = $(`<div id="html_63e4b6a5836b3282439e5cd56d8dd54b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">鳳山</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>高雄市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">85</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>292.85 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_4471a04e98694dfc39b0b7e10672796c.setContent(html_63e4b6a5836b3282439e5cd56d8dd54b);
+            
+        
+
+        circle_marker_36eb5d728675d9dfbdd8c30f094c54cf.bindPopup(popup_4471a04e98694dfc39b0b7e10672796c)
+        ;
+
+        
+    
+    
+            circle_marker_36eb5d728675d9dfbdd8c30f094c54cf.bindTooltip(
+                `<div>
+                     鳳山 - AQI: 85
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_28f161d07e73b8ebebc2c96c32d5a63b = L.circleMarker(
+                [22.5598, 120.3543],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.64, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_ced7f1ad0d94d32e9bbe6b883913c8b4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8825ac1055e70354a95fee6cd3c1b529 = $(`<div id="html_8825ac1055e70354a95fee6cd3c1b529" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">大寮</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>高雄市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">82</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>299.95 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_ced7f1ad0d94d32e9bbe6b883913c8b4.setContent(html_8825ac1055e70354a95fee6cd3c1b529);
+            
+        
+
+        circle_marker_28f161d07e73b8ebebc2c96c32d5a63b.bindPopup(popup_ced7f1ad0d94d32e9bbe6b883913c8b4)
+        ;
+
+        
+    
+    
+            circle_marker_28f161d07e73b8ebebc2c96c32d5a63b.bindTooltip(
+                `<div>
+                     大寮 - AQI: 82
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c46799dd3cc89e7faf605aa811426234 = L.circleMarker(
+                [22.5019, 120.3943],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.52, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_224cefa6a50d36f35f784bd6c42819b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_19806ace14e7c513c22da347e41609cc = $(`<div id="html_19806ace14e7c513c22da347e41609cc" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">林園</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>高雄市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">76</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>304.3 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_224cefa6a50d36f35f784bd6c42819b5.setContent(html_19806ace14e7c513c22da347e41609cc);
+            
+        
+
+        circle_marker_c46799dd3cc89e7faf605aa811426234.bindPopup(popup_224cefa6a50d36f35f784bd6c42819b5)
+        ;
+
+        
+    
+    
+            circle_marker_c46799dd3cc89e7faf605aa811426234.bindTooltip(
+                `<div>
+                     林園 - AQI: 76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3921bfb4088de34f3b9776cb3b799f47 = L.circleMarker(
+                [22.7287, 120.3014],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.86, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_2550ce35499fc022a6542438a8e75361 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_962bcfd9bf5d30ab0049ea520e1dabf3 = $(`<div id="html_962bcfd9bf5d30ab0049ea520e1dabf3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">楠梓</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>高雄市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">93</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>285.13 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_2550ce35499fc022a6542438a8e75361.setContent(html_962bcfd9bf5d30ab0049ea520e1dabf3);
+            
+        
+
+        circle_marker_3921bfb4088de34f3b9776cb3b799f47.bindPopup(popup_2550ce35499fc022a6542438a8e75361)
+        ;
+
+        
+    
+    
+            circle_marker_3921bfb4088de34f3b9776cb3b799f47.bindTooltip(
+                `<div>
+                     楠梓 - AQI: 93
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8e4707c5babbe01b08c54028467cc752 = L.circleMarker(
+                [22.69, 120.2982],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.74, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_ef219acd579b8bbcf1512d9f0f189bcc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2cee24975b8bf30181194928a4b061a1 = $(`<div id="html_2cee24975b8bf30181194928a4b061a1" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">左營</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>高雄市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">87</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>289.14 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_ef219acd579b8bbcf1512d9f0f189bcc.setContent(html_2cee24975b8bf30181194928a4b061a1);
+            
+        
+
+        circle_marker_8e4707c5babbe01b08c54028467cc752.bindPopup(popup_ef219acd579b8bbcf1512d9f0f189bcc)
+        ;
+
+        
+    
+    
+            circle_marker_8e4707c5babbe01b08c54028467cc752.bindTooltip(
+                `<div>
+                     左營 - AQI: 87
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3110235949298cfb9696f16cec27b808 = L.circleMarker(
+                [22.5667, 120.3512],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.620000000000001, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_24a66e3a06a3f4078863762cc8ee56c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ca7ec3f14b62bfcd73e2a90bf4a2f702 = $(`<div id="html_ca7ec3f14b62bfcd73e2a90bf4a2f702" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">小港</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>高雄市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">81</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>299.37 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_24a66e3a06a3f4078863762cc8ee56c8.setContent(html_ca7ec3f14b62bfcd73e2a90bf4a2f702);
+            
+        
+
+        circle_marker_3110235949298cfb9696f16cec27b808.bindPopup(popup_24a66e3a06a3f4078863762cc8ee56c8)
+        ;
+
+        
+    
+    
+            circle_marker_3110235949298cfb9696f16cec27b808.bindTooltip(
+                `<div>
+                     小港 - AQI: 81
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8629df0c7ba274e96234926e2b1d7eb6 = L.circleMarker(
+                [22.6828, 120.4908],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.74, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_e870d3dce816f8fa8b3a1cb0abd47733 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_339d152a8c7e8dfedd80de090fed90b0 = $(`<div id="html_339d152a8c7e8dfedd80de090fed90b0" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">屏東</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>屏東縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">87</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>282.02 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_e870d3dce816f8fa8b3a1cb0abd47733.setContent(html_339d152a8c7e8dfedd80de090fed90b0);
+            
+        
+
+        circle_marker_8629df0c7ba274e96234926e2b1d7eb6.bindPopup(popup_e870d3dce816f8fa8b3a1cb0abd47733)
+        ;
+
+        
+    
+    
+            circle_marker_8629df0c7ba274e96234926e2b1d7eb6.bindTooltip(
+                `<div>
+                     屏東 - AQI: 87
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1d338909959d0e35c2d5cfcd359fa3c9 = L.circleMarker(
+                [22.0011, 120.746],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.56, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_889eea4c5d8cd05b6a4522879e0fec08 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cedd23a942cc824e9d45bc378988d240 = $(`<div id="html_cedd23a942cc824e9d45bc378988d240" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">恆春</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>屏東縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #00E400; font-weight: bold;">28</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>346.49 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：良好</p>             </div>             </div>`)[0];
+                popup_889eea4c5d8cd05b6a4522879e0fec08.setContent(html_cedd23a942cc824e9d45bc378988d240);
+            
+        
+
+        circle_marker_1d338909959d0e35c2d5cfcd359fa3c9.bindPopup(popup_889eea4c5d8cd05b6a4522879e0fec08)
+        ;
+
+        
+    
+    
+            circle_marker_1d338909959d0e35c2d5cfcd359fa3c9.bindTooltip(
+                `<div>
+                     恆春 - AQI: 28
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a941465602ad8c97fa163d59e06eb50b = L.circleMarker(
+                [23.9979, 121.607],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.78, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_5bf8c161a5c4d186dcd8238639dbe1c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_49cce4435e77582d7abd9bbc377147d4 = $(`<div id="html_49cce4435e77582d7abd9bbc377147d4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">花蓮</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>花蓮縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #00E400; font-weight: bold;">39</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>116.65 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：良好</p>             </div>             </div>`)[0];
+                popup_5bf8c161a5c4d186dcd8238639dbe1c8.setContent(html_49cce4435e77582d7abd9bbc377147d4);
+            
+        
+
+        circle_marker_a941465602ad8c97fa163d59e06eb50b.bindPopup(popup_5bf8c161a5c4d186dcd8238639dbe1c8)
+        ;
+
+        
+    
+    
+            circle_marker_a941465602ad8c97fa163d59e06eb50b.bindTooltip(
+                `<div>
+                     花蓮 - AQI: 39
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1328e6a6f43d4c533a0206089560768f = L.circleMarker(
+                [24.6929, 121.7355],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_6a425068aac3b818bfbb2555b80f0e7f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c984d3d78ad056f248b8216075bc73c9 = $(`<div id="html_c984d3d78ad056f248b8216075bc73c9" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">宜蘭</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>宜蘭縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #00E400; font-weight: bold;">50</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>45.09 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：良好</p>             </div>             </div>`)[0];
+                popup_6a425068aac3b818bfbb2555b80f0e7f.setContent(html_c984d3d78ad056f248b8216075bc73c9);
+            
+        
+
+        circle_marker_1328e6a6f43d4c533a0206089560768f.bindPopup(popup_6a425068aac3b818bfbb2555b80f0e7f)
+        ;
+
+        
+    
+    
+            circle_marker_1328e6a6f43d4c533a0206089560768f.bindTooltip(
+                `<div>
+                     宜蘭 - AQI: 50
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a98f2fcdee627605c00f87624df83ab5 = L.circleMarker(
+                [25.0829, 121.4914],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.74, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_69e5d4af9f0a795c973305708554e965 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ba9e458acc0cd53261155cc5da1f5c84 = $(`<div id="html_ba9e458acc0cd53261155cc5da1f5c84" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">三重</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>新北市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">87</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>4.67 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_69e5d4af9f0a795c973305708554e965.setContent(html_ba9e458acc0cd53261155cc5da1f5c84);
+            
+        
+
+        circle_marker_a98f2fcdee627605c00f87624df83ab5.bindPopup(popup_69e5d4af9f0a795c973305708554e965)
+        ;
+
+        
+    
+    
+            circle_marker_a98f2fcdee627605c00f87624df83ab5.bindTooltip(
+                `<div>
+                     三重 - AQI: 87
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d65b4f070866bef54ee82f227ebaa047 = L.circleMarker(
+                [24.9539, 121.2256],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.78, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_3a4f669bb50d1c9c3dbf79bf1d560705 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5895ded66ba5a25b16035a22ac5a3e08 = $(`<div id="html_5895ded66ba5a25b16035a22ac5a3e08" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">中壢</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>桃園市</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">89</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>31.2 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_3a4f669bb50d1c9c3dbf79bf1d560705.setContent(html_5895ded66ba5a25b16035a22ac5a3e08);
+            
+        
+
+        circle_marker_d65b4f070866bef54ee82f227ebaa047.bindPopup(popup_3a4f669bb50d1c9c3dbf79bf1d560705)
+        ;
+
+        
+    
+    
+            circle_marker_d65b4f070866bef54ee82f227ebaa047.bindTooltip(
+                `<div>
+                     中壢 - AQI: 89
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_60c05e853191292dafe19a8370fbaeb3 = L.circleMarker(
+                [26.1634, 119.9518],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.22, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_833f1cfaf4d39b63982358294b42ac3a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1eb5bcb2fd55adaaa2544f01c891e3f0 = $(`<div id="html_1eb5bcb2fd55adaaa2544f01c891e3f0" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">馬祖</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>連江縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FF0000; font-weight: bold;">111</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>199.98 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：不健康</p>             </div>             </div>`)[0];
+                popup_833f1cfaf4d39b63982358294b42ac3a.setContent(html_1eb5bcb2fd55adaaa2544f01c891e3f0);
+            
+        
+
+        circle_marker_60c05e853191292dafe19a8370fbaeb3.bindPopup(popup_833f1cfaf4d39b63982358294b42ac3a)
+        ;
+
+        
+    
+    
+            circle_marker_60c05e853191292dafe19a8370fbaeb3.bindTooltip(
+                `<div>
+                     馬祖 - AQI: 111
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6f71ac47c348f3bc52ef2b542de388a0 = L.circleMarker(
+                [24.4368, 118.3168],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.879999999999999, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_210ebddebbb34ca21046c61d460f0c6a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ab1c600800918b0c4a6f84e76fa666a2 = $(`<div id="html_ab1c600800918b0c4a6f84e76fa666a2" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">金門</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>金門縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">94</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>330.72 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_210ebddebbb34ca21046c61d460f0c6a.setContent(html_ab1c600800918b0c4a6f84e76fa666a2);
+            
+        
+
+        circle_marker_6f71ac47c348f3bc52ef2b542de388a0.bindPopup(popup_210ebddebbb34ca21046c61d460f0c6a)
+        ;
+
+        
+    
+    
+            circle_marker_6f71ac47c348f3bc52ef2b542de388a0.bindTooltip(
+                `<div>
+                     金門 - AQI: 94
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_541941dc019e736802957a1a3709299e = L.circleMarker(
+                [23.9623, 120.5744],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.64, "stroke": true, "weight": 1}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+        var popup_4c45a1e4a353cb7c00121f04426baac8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fb0e22d37de45479a392fffd80d5bdef = $(`<div id="html_fb0e22d37de45479a392fffd80d5bdef" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; font-size: 14px;">                 <h4 style="margin: 5px 0; color: #333;">員林</h4>                 <p style="margin: 3px 0;"><strong>所在地：</strong>彰化縣</p>                 <p style="margin: 3px 0;"><strong>AQI 數值：</strong><span style="color: #FFFF00; font-weight: bold;">82</span></p>                 <p style="margin: 3px 0;"><strong>距離台北車站：</strong>153.57 公里</p>                 <p style="margin: 3px 0; font-size: 12px; color: #666;">等級：中等</p>             </div>             </div>`)[0];
+                popup_4c45a1e4a353cb7c00121f04426baac8.setContent(html_fb0e22d37de45479a392fffd80d5bdef);
+            
+        
+
+        circle_marker_541941dc019e736802957a1a3709299e.bindPopup(popup_4c45a1e4a353cb7c00121f04426baac8)
+        ;
+
+        
+    
+    
+            circle_marker_541941dc019e736802957a1a3709299e.bindTooltip(
+                `<div>
+                     員林 - AQI: 82
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3021df83187059a22d5a93ab09db7ac3 = L.marker(
+                [25.0478, 121.517],
+                {
+}
+            ).addTo(map_362dad9d9e4b014e40697742bf6de281);
+        
+    
+            var icon_9cb33655c947e204b748c5d8a3ee75fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "train",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_22fff2af143e8f920ab9ed002331e064 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cab6f932037e094ca81fadb5a16850f = $(`<div id="html_5cab6f932037e094ca81fadb5a16850f" style="width: 100.0%; height: 100.0%;"><div style="font-family: Arial, sans-serif; text-align: center;"><h4 style="margin: 5px 0; color: #FF6B35;">🚄 台北車站</h4><p style="margin: 3px 0;">參考點座標</p></div></div>`)[0];
+                popup_22fff2af143e8f920ab9ed002331e064.setContent(html_5cab6f932037e094ca81fadb5a16850f);
+            
+        
+
+        marker_3021df83187059a22d5a93ab09db7ac3.bindPopup(popup_22fff2af143e8f920ab9ed002331e064)
+        ;
+
+        
+    
+    
+            marker_3021df83187059a22d5a93ab09db7ac3.bindTooltip(
+                `<div>
+                     台北車站
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3021df83187059a22d5a93ab09db7ac3.setIcon(icon_9cb33655c947e204b748c5d8a3ee75fd);
+            
+</script>
+</html>
